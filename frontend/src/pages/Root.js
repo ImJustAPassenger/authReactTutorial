@@ -15,13 +15,14 @@ function RootLayout() {
   const submit = useSubmit();
 
   useEffect(() => {
-    if (!token) return;
+    if (!token) return ;
 
     if (token === "EXPIRED") {
       submit(null, { action: "/logout", method: "POST" });
-      return;
+      return ;
     }
-const tokenDuration = getTokenDuration()
+    const tokenDuration = getTokenDuration();
+    console.log(tokenDuration);
     setTimeout(() => {
       submit(null, { action: "/logout", method: "POST" });
     }, tokenDuration);
